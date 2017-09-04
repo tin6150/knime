@@ -11,13 +11,13 @@
 # so that need to be bind mounted to writable location.
 
 
-BootStrap: debootstrap
-OSVersion: trusty
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+#BootStrap: debootstrap
+#OSVersion: trusty
+#MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 ## Hmm... docker build a container, but nothing in /opt, didn't execute rest of apt-get? 
-##BootStrap: docker
-##From: ubuntu:14.04
+BootStrap: docker
+From: ubuntu:14.04
 
 %runscript
     echo 'To run Knime from a Singularity container.  Will start momentarily...'
