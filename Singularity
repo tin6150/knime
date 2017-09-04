@@ -30,7 +30,7 @@ From: ubuntu:14.04
 
 %post
     echo "Hello from inside the container"
-    sed -i 's/$/ universe/' /etc/apt/sources.list
+    #sed -i 's/$/ universe/' /etc/apt/sources.list	## dont remember what this was for
     apt-get -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 libgtk2.0-0 firefox
     # may actually need nautilus ?  or what's gnome native web browser?  some gtk browser?
     #apt-get -y --force-yes install git
