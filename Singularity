@@ -35,9 +35,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # may actually need nautilus ?  or what's gnome native web browser?  some gtk browser?
     #apt-get -y --force-yes install git
     #apt-get -y --force-yes install gedit			# consistently cause problem :(
-
     touch /THIS_IS_INSIDE_SINGULARITY
-
     cd /opt
     # download knime from a temporary location.
     # after POC, need to work out with Greg Landrum et co on way to download from knime.com and get user registration and agreement.
@@ -52,6 +50,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     tar xzf $KNIME_GZ
     # rm $KNIME_GZ  # 400 MB for version without "all free extension"
     ln -s $KNIME_VER knime
-
-
+    echo "Goodbye from inside the container"
 
