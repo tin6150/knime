@@ -6,18 +6,18 @@
 # This singularity container is for POC.  
 # If you use this, please register your at knime.com
 
-# container size is about 1.6 GB
+# container size is about 1.8 GB
 # Knime workspace will default to $HOME, 
 # so that need to be bind mounted to writable location.
 
-## TBA: file rename to knime when posting to singularity-hub
 
-##BootStrap: debootstrap
-##OSVersion: trusty
-##MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+BootStrap: debootstrap
+OSVersion: trusty
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
-BootStrap: docker
-From: ubuntu:14.04
+## Hmm... docker build a container, but nothing in /opt, didn't execute rest of apt-get? 
+##BootStrap: docker
+##From: ubuntu:14.04
 
 %runscript
     echo 'To run Knime from a Singularity container.  Will start momentarily...'
@@ -32,6 +32,7 @@ From: ubuntu:14.04
     echo "Hello from inside the container"
     sed -i 's/$/ universe/' /etc/apt/sources.list
     apt-get -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 libgtk2.0-0 firefox
+    # may actually need nautilus ?  or what's gnome native web browser?  some gtk browser?
     #apt-get -y --force-yes install git
     #apt-get -y --force-yes install gedit			# consistently cause problem :(
 

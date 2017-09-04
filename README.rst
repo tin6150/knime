@@ -14,7 +14,9 @@ Please go to http://www.knime.com and accept their EULA.
 Getting and running this knime container:
 
 ::
-	singularity pull shub://1898  ## *FIXME* 
+	singularity pull shub://2719
+	--or--
+	singularity pull shub://tin6150/knime:master
 	singularity run -B /run knime.img 
 
 Note that $HOME is also expected to be bindmounted, so that your knime workspace can be created under it.
@@ -32,6 +34,6 @@ sudo -E $Singularity bootstrap knime.img Singularity | tee sing_log.txt 2>&1
 Ref:
 
 - https://github.com/tin6150/singhub/ubuntu_knime.def
-- https://singularity-hub.org/collections/TBA
+- https://singularity-hub.org/collections/418/
 
 - https://singularity-hub.org/containers/1898/      # inspiration for -B /run etc.  Thx Tru!!
