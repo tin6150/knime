@@ -48,7 +48,8 @@ From: ubuntu:14.04
     ##[[ -f $KNIME_GZ ]] || curl https://drive.google.com/file/d/0B1kImCblq9CeRjFranJnV2lCb00/view?usp=sharing -o $KNIME_GZ 
     ##[[ -f $KNIME_GZ ]] || curl https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -o $KNIME_GZ 
     # http://subdom.ask-margo.com/cache_tmp/knime_3.4.0.linux.gtk.x86_64.tar.gz
-    test -f $KNIME_GZ || wget https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
+    # wget -q to be completely quiet.  hopefully -nv reduces output to sing hub enough.
+    test -f $KNIME_GZ || wget --no-verbose https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
     tar xzf $KNIME_GZ
     # rm $KNIME_GZ  # 400 MB for version without "all free extension"
     ln -s $KNIME_VER knime
