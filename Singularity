@@ -10,6 +10,10 @@
 # Knime workspace will default to $HOME, 
 # so that need to be bind mounted to writable location.
 
+# the master branch uses the core Knime Analytics Platform
+# without the extensions
+# the branch "withFullExtension" would have that extension
+# and ballon the container to 5308 MB
 
 #BootStrap: debootstrap
 #OSVersion: trusty
@@ -41,20 +45,20 @@ From: ubuntu:14.04
     cd /opt
     # download knime from a temporary location.
     # after POC, need to work out with Greg Landrum et co on way to download from knime.com and get user registration and agreement.
-    #KNIME_VER=knime_3.4.0.linux
-    KNIME_VER=knime-full-latest-linux
+    KNIME_VER=knime_3.4.0.linux
+    #KNIME_VER=knime-full-latest-linux
     export KNIME_VER
     KNIME_GZ=${KNIME_VER}.gtk.x86_64.tar.gz 
     export KNIME_GZ
     # wget -q to be completely quiet.  hopefully -nv reduces output to sing hub enough.
-    ##~test -f $KNIME_GZ || wget --no-verbose https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
+    test -f $KNIME_GZ || wget --no-verbose https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
     ## there maybe a docker-ized version of knime.  see 
     ## https://www.knime.com/forum/knime-general/knime-in-docker
-    test -f $KNIME_GZ || wget --no-verbose https://www.knime.com/knime_downloads/linux/knime-full-latest-linux.gtk.x86_64.tar.gz -O $KNIME_GZ 
+    #test -f $KNIME_GZ || wget --no-verbose https://www.knime.com/knime_downloads/linux/knime-full-latest-linux.gtk.x86_64.tar.gz -O $KNIME_GZ 
     # 
     tar xzf $KNIME_GZ
     #rm $KNIME_GZ  # 400 MB for version without "all free extension"
-    #ln -s $KNIME_VER knime
-    ln -s knime[_-]* knime
+    ln -s $KNIME_VER knime
+    #ln -s knime[_-]* knime
     echo "Goodbye from inside the container"
 
