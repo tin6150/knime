@@ -23,7 +23,7 @@ Note that $HOME is also expected to be bindmounted, so that your knime workspace
 Creating containers (if not using Singularity Hub):
 
 Singularity=/opt/singularity/2.3/bin/singularity
-sudo    $Singularity create --size 1900 knime.img
+sudo    $Singularity create --size 1900 knime.img    # need 5400 for knime with full extensions
 sudo -E $Singularity bootstrap knime.img Singularity | tee sing_log.txt 2>&1 
 
 
