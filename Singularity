@@ -54,7 +54,9 @@ From: ubuntu:14.04
     # 
     tar xzf $KNIME_GZ
     #rm $KNIME_GZ  # 400 MB for version without "all free extension"
+    #rm $KNIME_GZ  #   2 GB for full version ie include "all free extension"
     #ln -s $KNIME_VER knime
-    ln -s knime[_-]* knime
+    #ln -s knime[_-]* knime    # cant do this, there would be the tar.gz and the extracted dir
+    ln -s knime-full_3.4.0 knime
     echo "Goodbye from inside the container"
 
