@@ -15,15 +15,15 @@
 #OSVersion: trusty
 #MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
-## Hmm... docker build a container, but nothing in /opt, didn't execute rest of apt-get? 
 BootStrap: docker
 From: ubuntu:14.04
 
 %runscript
-    echo 'To run Knime from a Singularity container.  Will start momentarily...'
+    echo 'To run Knime from a Singularity container, please start as:  
+    echo 'singularity run -B /run tin6150-knime-master.img'
+    echo 'Knime Will start momentarily...'
     echo 'Please register at Knime.com when using knime from this Proof of Concept Container. ' 
-    sleep 1     # sleep 30
-    echo 'singularity run -B /run knime.img'
+    sleep 20
     echo ''
     /opt/knime/knime "$@"
     
@@ -51,7 +51,7 @@ From: ubuntu:14.04
     # wget -q to be completely quiet.  hopefully -nv reduces output to sing hub enough.
     test -f $KNIME_GZ || wget --no-verbose https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
     tar xzf $KNIME_GZ
-    # rm $KNIME_GZ  # 400 MB for version without "all free extension"
+    rm $KNIME_GZ  # 400 MB for version without "all free extension"
     ln -s $KNIME_VER knime
     echo "Goodbye from inside the container"
 
