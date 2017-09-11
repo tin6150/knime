@@ -14,6 +14,7 @@ Please go to http://www.knime.com and accept their EULA.
 Getting and running this knime container:
 
 ::
+
 	singularity pull shub://tin6150/knime:master
 	singularity run -B /run knime.img 
 
