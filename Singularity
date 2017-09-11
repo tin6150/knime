@@ -41,27 +41,29 @@ From: ubuntu:14.04
     #sed -i 's/$/ universe/' /etc/apt/sources.list	## dont remember what this was for
     apt-key update
     apt-get update
-    apt-get -f -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 libgtk2.0-0 firefox xul-ext-ubufox  libwebkitgtk-3.0-0
-    # https://www.knime.com/faq#q6 about webkit req .  
+    #apt-get -f -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 libgtk2.0-0 firefox xul-ext-ubufox  libwebkitgtk-3.0-0
+    apt-get -f -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 firefox xul-ext-ubufox  libwebkitgtk-3.0-0
+    # https://www.knime.com/faq#q6 about webkit requirements
     # xul-ext-ubufox don't seems to do anything to help
+    # gtk-2 was used up to knime 2.9, so should only need gtk-3 for knime 3.x and above
     touch /THIS_IS_INSIDE_SINGULARITY
     cd /opt
     # download knime from a temporary location.
     # after POC, need to work out with Greg Landrum et co on way to download from knime.com and get user registration and agreement.
-    KNIME_VER="knime_3.4.0"
+    #KNIME_VER="knime_3.4.0"
+    KNIME_VER="knime-full-latest"
     KNIME_PLAT="linux.gtk.x86_64"
-    #KNIME_VER=knime-full-latest-linux
-    KNIME_VER=knime-full-latest
     export KNIME_VER KNIME_PLAT
     KNIME_GZ=tmp.${KNIME_VER}.${KNIME_PLAT}.tar.gz 
     export KNIME_GZ
     # wget -q would be completely quiet.  
     # but -nv reduces output to sing hub enough.
-    test -f $KNIME_GZ || wget --no-verbose https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
+    #test -f $KNIME_GZ || wget --no-verbose https://www.dropbox.com/s/lyzmfu3y6q1x06k/knime_3.4.0.linux.gtk.x86_64.tar.gz?dl=0 -O $KNIME_GZ 
     ## there maybe a docker-ized version of knime.  see 
     ## https://www.knime.com/forum/knime-general/knime-in-docker
     #test -f $KNIME_GZ || wget --no-verbose https://www.knime.com/knime_downloads/linux/knime-full-latest-linux.gtk.x86_64.tar.gz -O $KNIME_GZ 
-    test -f $KNIME_GZ || wget --no-verbose https://www.knime.com/knime_downloads/linux/${KNIME_VER}-${KNIME+PLAT}.tar.gz -O $KNIME_GZ 
+    # note that full Extension version use -linux, whereas the basic platform w/o extension use .linux in the filename :(
+    test -f $KNIME_GZ || wget --no-verbose https://www.knime.com/knime_downloads/linux/${KNIME_VER}-${KNIME_PLAT}.tar.gz -O $KNIME_GZ 
     # 
     tar xzf $KNIME_GZ
     #rm $KNIME_GZ  # 400 MB for version without "all free extension"
