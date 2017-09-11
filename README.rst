@@ -4,7 +4,7 @@ knime
 Knime provided via a Singularity container.
 
 This is a proof of concept container packaging.
-Please go to http://www.knime.com and accept their EULA.
+Please go to http://www.knime.com/downloads and complete the registration/EULA.
 
 - Ubuntu Trusty
 - Knime installed in /opt (http://www.knime.com) 
@@ -23,16 +23,18 @@ Note that $HOME is also expected to be bindmounted, so that your knime workspace
 
 Creating containers (if not using Singularity Hub):
 
-Singularity=/opt/singularity/2.3/bin/singularity
-sudo    $Singularity create --size 1900 knime.img    # need 5400 for knime with full extensions
-sudo -E $Singularity bootstrap knime.img Singularity | tee sing_log.txt 2>&1 
+::
+
+	Singularity=/opt/singularity/2.3/bin/singularity
+	sudo    $Singularity create --size 1900 knime.img    # need 5400 for knime with full extensions
+	sudo -E $Singularity bootstrap knime.img Singularity | tee sing_log.txt 2>&1 
 
 
-# space utilization:
-# 1900 MB enough to hold download of knime regular version and uncompress it
-#      removing the .tar.gz would save ~400 MB
-# 5350 MB needed to hold download and hold the expanded files.
-#      removing the .tar.gz would save 1905 MB
+space utilization:
+- 1900 MB enough to hold download of knime regular version and uncompress it
+-      removing the .tar.gz would save ~400 MB
+- 5350 MB needed to hold download and hold the expanded files.
+-      removing the .tar.gz would save 1905 MB
 
   
 Ref:

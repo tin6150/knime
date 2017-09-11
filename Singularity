@@ -23,10 +23,12 @@ BootStrap: docker
 From: ubuntu:14.04
 
 %runscript
+    echo ''
     echo 'To run Knime from a Singularity container, please start as:'
     echo 'singularity run -B /run tin6150-knime-master.img'
-    echo 'Please register at Knime.com when using knime from this Proof of Concept Container. ' 
-    echo 'Knime Will start momentarily...'
+    echo ''
+    echo 'Please go to http://www.knime.com/downloads and complete the registration/EULA when using knime from this Proof of Concept Container. ' 
+    echo 'Knime Will start after a brief pause...'
     sleep 3
     echo 'Starting...'
     /opt/knime/knime "$@"
@@ -37,10 +39,9 @@ From: ubuntu:14.04
     #sed -i 's/$/ universe/' /etc/apt/sources.list	## dont remember what this was for
     apt-key update
     apt-get update
-    apt-get -f -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 libgtk2.0-0 firefox xul-ext-ubufox  
-    # knime prob need xulrunner, conflicting info if firefox comes with it.
-    # maybe xul-ext-ubufox  help.
-    # may actually need nautilus ?  or what's gnome native web browser?  some gtk browser?
+    apt-get -f -y --force-yes install vim ncurses-term less wget curl tar bzip2 coreutils python zlib1g-dev zlib1g libgtk-3-0 libgtk2.0-0 firefox xul-ext-ubufox  libwebkitgtk-3.0-0
+    # https://www.knime.com/faq#q6 about webkit req .  
+    # xul-ext-ubufox don't seems to do anything to help
     touch /THIS_IS_INSIDE_SINGULARITY
     cd /opt
     # download knime from a temporary location.
