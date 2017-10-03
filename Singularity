@@ -64,4 +64,5 @@ From: ubuntu:14.04
     ln -s $KNIME_VER knime
     #ln -s knime[_-]* knime
     echo "Goodbye from inside the container"
+ 
 
