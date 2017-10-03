@@ -25,21 +25,22 @@ Creating containers (if not using Singularity Hub):
 
 ::
 
-	Singularity=/opt/singularity/2.3/bin/singularity
+	Singularity=/opt/singularity/2.3.1/bin/singularity
 	sudo    $Singularity create --size 1900 knime.img    # need 5400 for knime with full extensions
 	sudo -E $Singularity bootstrap knime.img Singularity | tee sing_log.txt 2>&1 
 
 
-space utilization:
+Space utilization:
+
 - 1900 MB enough to hold download of knime regular version and uncompress it
--      removing the .tar.gz would save ~400 MB
+	- removing the .tar.gz would save ~400 MB
 - 5350 MB needed to hold download and hold the expanded files.
--      removing the .tar.gz would save 1905 MB
+	- removing the .tar.gz would save 1905 MB
 
   
 Ref:
 
 - https://github.com/tin6150/singhub/ubuntu_knime.def
 - https://singularity-hub.org/collections/421/
-
+- 
 - https://singularity-hub.org/containers/1898/      # inspiration for -B /run etc.  Thx Tru!!
