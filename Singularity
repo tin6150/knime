@@ -76,4 +76,3 @@ From: ubuntu:14.04
     ln -s knime[_-]* knime     # hopefully with the renamed KNIME_GZ would work have multiple source matching now
     echo "Goodbye from inside the container"
  
-
