@@ -41,6 +41,6 @@ Space utilization:
 Ref:
 
 - https://github.com/tin6150/singhub/ubuntu_knime.def
-- https://singularity-hub.org/collections/421/
+- https://singularity-hub.org/collections/305
 -
 - https://singularity-hub.org/containers/1898/      # inspiration for -B /run etc.  Thx Tru!!
