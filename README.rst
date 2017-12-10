@@ -1,6 +1,9 @@
 knime
 =====
 
+.. figure:: knime_in_singularity_container.png 
+	:align: center
+
 Knime provided via a Singularity container.
 
 This is a proof of concept container packaging.
