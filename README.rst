@@ -1,6 +1,9 @@
 knime
 =====
 
+.. figure:: knime_in_singularity_container.png 
+	:align: center
+
 Knime provided via a Singularity container.
 
 This is a proof of concept container packaging.
@@ -25,7 +28,7 @@ Creating containers (if not using Singularity Hub):
 
 ::
 
-	Singularity=/opt/singularity/2.3/bin/singularity
+	Singularity=/opt/singularity/2.3.1/bin/singularity
 	sudo    $Singularity create --size 1900 knime.img    # need 5400 for knime with full extensions
 	sudo -E $Singularity bootstrap knime.img Singularity | tee sing_log.txt 2>&1 
 
@@ -41,6 +44,6 @@ Space utilization:
 Ref:
 
 - https://github.com/tin6150/singhub/ubuntu_knime.def
-- https://singularity-hub.org/collections/305
--
+- https://singularity-hub.org/collections/421/
+- 
 - https://singularity-hub.org/containers/1898/      # inspiration for -B /run etc.  Thx Tru!!
